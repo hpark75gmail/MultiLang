@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript">
+
+etiquetasEsp = {
+  "Idioma_actual" : "Espa&ntilde;ol",
+  "Ingles" : "Ingl&eacute;s",
+  "Espaniol" : "Espa&ntilde;ol"
+};
+
+etiquetasIng = {
+  "Idioma_actual" : "English",
+  "Ingles" : "English",
+  "Espaniol" : "Spanish"
+};
+
+function actualizaTexto(idioma) {
+  // default "esp"
+  var etiquetas = etiquetasEsp;
+
+  switch(idioma) {
+  case "esp":
+    etiquetas = etiquetasEsp;
+    break;
+  case "ing":
+    etiquetas = etiquetasIng;
+    break;
+  }
+
+  for (clave in etiquetas) {
+    var elementos = document.getElementsByClassName(clave);
+    //console.log(elementos);
+    Array.prototype.forEach.call(elementos, function(elemento) {
+      elemento.innerHTML = etiquetas[clave];
+    });
+  }
+}
+
+</script>
+
+<title>Page Title</title>
+
+</head>
+<body onLoad="actualizaTexto('Esp')">
+<button class="Espaniol" type="button" onclick="actualizaTexto('esp')" >
+Espaniol
+</button>
+
+<button class="Ingles" type="button" onclick="actualizaTexto('ing')" >
+Ingles
+</button>
+
+<h1 class="Idioma_actual">Idioma_actual</h1>
+<p class="Idioma_actual">Idioma_actual</p>
+
+</body>
+</html>
